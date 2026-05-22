@@ -75,12 +75,11 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
+      <motion.div style={{ y: contentY, opacity }} className="relative z-10 px-12 pb-20 max-w-xl">
       <motion.div
-        style={{ y: contentY, opacity }}
         variants={heroVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 px-12 pb-20 max-w-xl"
       >
         <motion.p variants={item} className="flex items-center gap-3 text-[0.65rem] tracking-[0.35em] uppercase text-white/75 font-semibold mb-4">
           <span className="w-8 h-px bg-white/50" />
@@ -126,6 +125,7 @@ export default function Hero() {
             </motion.a>
           ))}
         </motion.div>
+      </motion.div>
       </motion.div>
 
       {/* Kit badge — spin on load */}

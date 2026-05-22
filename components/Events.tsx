@@ -120,8 +120,9 @@ export default function Events() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VIEWPORT}
               transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6, borderColor: "var(--magenta)", boxShadow: "0 12px 40px rgba(212,0,122,0.12)" }}
-              className="p-8 border border-neutral-200 transition-colors duration-200 cursor-default"
+              whileHover={{ y: -6, borderColor: "#D4007A", boxShadow: "0 12px 40px rgba(212,0,122,0.12)" }}
+              className="p-8 border transition-colors duration-200 cursor-default"
+              style={{ borderColor: "#e5e5e5" }}
             >
               <span
                 className="inline-block text-white text-[0.55rem] tracking-widest uppercase font-bold px-3 py-1 mb-4"
