@@ -45,6 +45,30 @@ export default function Hero() {
         />
       </motion.div>
 
+      {/* Floating ambient particles */}
+      {([
+        { size: 6,  top: "22%", left: "20%", dur: 4.5, delay: 0   },
+        { size: 4,  top: "58%", left: "7%",  dur: 6.2, delay: 1.8 },
+        { size: 9,  top: "13%", left: "40%", dur: 5.5, delay: 0.7 },
+        { size: 3,  top: "72%", left: "28%", dur: 3.8, delay: 2.4 },
+      ] as { size: number; top: string; left: string; dur: number; delay: number }[]).map((p, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none rounded-full"
+          style={{ width: p.size, height: p.size, top: p.top, left: p.left, background: "rgba(255,255,255,0.18)" }}
+          animate={{ y: [0, -24, 0], opacity: [0.15, 0.55, 0.15] }}
+          transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.delay }}
+        />
+      ))}
+
+      {/* Periodic diagonal light sweep */}
+      <motion.div
+        className="absolute inset-y-0 pointer-events-none"
+        style={{ width: "40%", background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.06) 50%, transparent 80%)" }}
+        animate={{ x: ["-100%", "300%"] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 8, delay: 2.5 }}
+      />
+
       {/* Photo panel — parallax */}
       <motion.div
         style={{ y: photoY }}

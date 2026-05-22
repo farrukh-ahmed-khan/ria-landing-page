@@ -48,7 +48,8 @@ export default function StatsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-          className="py-6 text-center"
+          whileHover={{ y: -4, scale: 1.04, transition: { type: "spring", stiffness: 400, damping: 20, delay: 0 } }}
+          className="py-6 text-center cursor-default"
           style={{ borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}
         >
           <span className="font-display font-bold text-3xl block" style={{ color: "var(--magenta)" }}>

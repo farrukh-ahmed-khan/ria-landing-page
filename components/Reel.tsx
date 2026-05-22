@@ -56,17 +56,23 @@ export default function Reel() {
             style={{ background: "radial-gradient(ellipse at center, rgba(212,0,122,0.12) 0%, transparent 65%)" }}
           />
 
-          {/* Ripple on hover */}
+          {/* Ripple rings */}
           <motion.div
             className="absolute rounded-full"
             style={{ background: "rgba(212,0,122,0.06)", width: 200, height: 200 }}
             animate={{ scale: [1, 2.5, 1], opacity: [0.4, 0, 0.4] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
+          <motion.div
+            className="absolute rounded-full"
+            style={{ background: "rgba(212,0,122,0.04)", width: 200, height: 200 }}
+            animate={{ scale: [1, 2.5, 1], opacity: [0.3, 0, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          />
 
           {/* Play button */}
           <motion.div
-            className="relative z-10 flex items-center justify-center w-[72px] h-[72px] rounded-full border-2"
+            className="relative z-10 flex items-center justify-center w-18 h-18 rounded-full border-2"
             style={{ borderColor: "var(--magenta)", background: "rgba(212,0,122,0.15)" }}
             whileHover={{ scale: 1.15, background: "rgba(212,0,122,0.35)" }}
             whileTap={{ scale: 0.92 }}

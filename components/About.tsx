@@ -21,9 +21,11 @@ export default function About() {
           viewport={VIEWPORT}
           className="relative"
         >
-          <div
+          <motion.div
             className="relative overflow-hidden flex items-center justify-center"
             style={{ aspectRatio: "3/4", background: "linear-gradient(135deg,#e8d0da,#c8a0b8)" }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* animated offset border */}
             <motion.div
@@ -38,7 +40,7 @@ export default function About() {
               <span className="block text-5xl mb-2">👩🏽</span>
               Professional headshot<br />to be added
             </p>
-          </div>
+          </motion.div>
 
           <motion.div
             className="absolute -bottom-6 -right-6 px-5 py-4 text-center text-white"

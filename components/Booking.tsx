@@ -45,17 +45,31 @@ export default function Booking() {
           <span className="w-8 h-0.5 bg-white/40" />
         </motion.p>
 
-        <motion.h2
-          variants={fadeUp}
+        <h2
           className="font-display font-black text-white leading-tight mb-4"
           style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)" }}
         >
-          Let&apos;s make<br />it happen.
-        </motion.h2>
+          {([["Let’s", "make"], ["it", "happen."]] as string[][]).map((line, li) => (
+            <span key={li} className="block">
+              {line.map((word, wi) => (
+                <motion.span
+                  key={word}
+                  className="inline-block mr-[0.2em]"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VIEWPORT}
+                  transition={{ duration: 0.65, delay: 0.15 + (li * 2 + wi) * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
+          ))}
+        </h2>
 
         <motion.div
           variants={fadeUp}
-          className="w-16 h-px mx-auto my-6 bg-gradient-to-r from-transparent via-white/60 to-transparent"
+          className="w-16 h-px mx-auto my-6 bg-linear-to-r from-transparent via-white/60 to-transparent"
         />
 
         <motion.p variants={fadeUp} className="text-[0.85rem] text-white/75 leading-relaxed mb-10 max-w-md mx-auto">

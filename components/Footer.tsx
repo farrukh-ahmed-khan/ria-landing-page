@@ -16,9 +16,18 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="flex flex-wrap items-center justify-between gap-4 px-12 py-10"
-      style={{ background: "var(--charcoal)", borderTop: "3px solid var(--magenta)" }}
+      className="relative flex flex-wrap items-center justify-between gap-4 px-12 py-10"
+      style={{ background: "var(--charcoal)" }}
     >
+      {/* Animated top border — draws in from left */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-0.75"
+        style={{ background: "var(--magenta)", transformOrigin: "left" }}
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      />
       <span className="font-display text-lg font-bold text-white tracking-wide">
         Lavanya Suresh
       </span>

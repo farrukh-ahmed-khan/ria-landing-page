@@ -54,9 +54,16 @@ export default function Events() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] overflow-hidden mb-6"
+          className="relative grid grid-cols-1 md:grid-cols-[1.4fr_1fr] overflow-hidden mb-6"
           style={{ background: "var(--magenta)" }}
         >
+          {/* Periodic light sweep across the card */}
+          <motion.div
+            className="absolute inset-y-0 pointer-events-none z-10"
+            style={{ width: "45%", background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.07) 50%, transparent 80%)" }}
+            animate={{ x: ["-100%", "300%"] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 9, delay: 1.5 }}
+          />
           <div className="p-12 flex flex-col justify-between">
             <div>
               <motion.span
