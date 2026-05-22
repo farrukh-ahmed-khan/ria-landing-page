@@ -132,11 +132,12 @@ export default function Hero() {
           {[
             { href: "#booking", label: "Book Lavanya", primary: true },
             { href: "#reel",    label: "Watch Reel",   primary: false },
-            { href: "#",        label: "Download Kit", primary: false },
+            { href: "/lavanya-suresh-media-kit.pdf", label: "Download Kit", primary: false, download: true },
           ].map((btn) => (
             <motion.a
               key={btn.label}
               href={btn.href}
+              download={btn.download}
               whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -155,7 +156,10 @@ export default function Hero() {
       </motion.div>
 
       {/* Kit badge — spin on load */}
-      <motion.div
+      <motion.a
+        href="/lavanya-suresh-media-kit.pdf"
+        download
+        aria-label="Download Lavanya Suresh media kit PDF"
         className="absolute right-5 top-28 z-20 flex h-20 w-20 flex-col items-center justify-center text-center text-white font-bold text-[0.5rem] tracking-wide uppercase leading-snug shadow-2xl md:top-auto md:bottom-[120px] md:right-[calc(52%_-_60px)] md:h-[90px] md:w-[90px] md:text-[0.55rem]"
         style={{
           borderRadius: "50%",
@@ -167,7 +171,7 @@ export default function Hero() {
         whileHover={{ scale: 1.1, rotate: 8 }}
       >
         MY<br />SPEAKER<br />KIT
-      </motion.div>
+      </motion.a>
     </section>
   );
 }
