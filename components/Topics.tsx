@@ -49,7 +49,7 @@ export default function Topics() {
             viewport={VIEWPORT}
             transition={{ duration: 0.65, delay: (i % 2) * 0.15, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ backgroundColor: "rgba(212,0,122,0.07)" }}
-            className="group relative p-10 border cursor-default overflow-hidden transition-colors duration-300"
+            className="group relative overflow-hidden border p-6 cursor-default transition-colors duration-300 sm:p-8 md:p-10"
             style={{ background: "var(--charcoal)", borderColor: "rgba(255,255,255,0.06)" }}
           >
             {/* Animated left accent bar */}

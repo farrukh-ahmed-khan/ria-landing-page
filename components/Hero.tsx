@@ -24,7 +24,7 @@ export default function Hero() {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-screen flex items-end overflow-hidden stripe-texture"
+      className="relative flex min-h-screen min-h-[100svh] items-end overflow-hidden stripe-texture"
       style={{ background: "var(--magenta)" }}
     >
       {/* Radial glow — parallax */}
@@ -72,7 +72,7 @@ export default function Hero() {
       {/* Photo panel — parallax */}
       <motion.div
         style={{ y: photoY }}
-        className="absolute right-0 top-0 bottom-0 w-[48%] flex items-center justify-center"
+        className="absolute inset-x-0 top-0 h-[46%] flex items-center justify-center md:inset-y-0 md:left-auto md:h-auto md:w-[48%]"
         initial={{ x: 120, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
@@ -80,26 +80,28 @@ export default function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            clipPath: "polygon(12% 0, 100% 0, 100% 100%, 0 100%)",
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 82%)",
             background: "linear-gradient(135deg, #8B003A 0%, #5B0028 100%)",
           }}
+          data-desktop-clip="hero-photo-panel"
         />
         <div
           className="absolute inset-0"
           style={{
-            clipPath: "polygon(12% 0, 100% 0, 100% 100%, 0 100%)",
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 82%)",
             background:
-              "linear-gradient(to right, var(--magenta) 0%, transparent 35%), linear-gradient(to top, rgba(212,0,122,0.4) 0%, transparent 40%)",
+              "linear-gradient(to top, var(--magenta) 0%, transparent 65%), linear-gradient(to right, rgba(212,0,122,0.4) 0%, transparent 55%)",
           }}
+          data-desktop-clip="hero-photo-overlay"
         />
-        <p className="relative z-10 text-center text-xs tracking-widest uppercase text-white/20">
+        <p className="relative z-10 -mt-10 text-center text-xs tracking-widest uppercase text-white/20 md:mt-0">
           <span className="block text-5xl mb-2 opacity-30">📸</span>
           Professional headshot<br />coming soon
         </p>
       </motion.div>
 
       {/* Content */}
-      <motion.div style={{ y: contentY, opacity }} className="relative z-10 px-12 pb-20 max-w-xl">
+      <motion.div style={{ y: contentY, opacity }} className="relative z-10 max-w-xl px-5 pb-12 pt-64 sm:px-8 md:px-12 md:pb-20 md:pt-0">
       <motion.div
         variants={heroVariants}
         initial="hidden"
@@ -113,7 +115,7 @@ export default function Hero() {
         <motion.h1
           variants={item}
           className="font-display font-black text-white leading-[0.92] mb-4"
-          style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
+          style={{ fontSize: "clamp(2.9rem, 14vw, 8rem)" }}
         >
           LAVANYA<br />SURESH
         </motion.h1>
@@ -126,7 +128,7 @@ export default function Hero() {
           For the One Who&apos;s Ready!
         </motion.p>
 
-        <motion.div variants={item} className="flex flex-wrap gap-3">
+        <motion.div variants={item} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {[
             { href: "#booking", label: "Book Lavanya", primary: true },
             { href: "#reel",    label: "Watch Reel",   primary: false },
@@ -138,7 +140,7 @@ export default function Hero() {
               whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              className={`px-8 py-3 text-[0.65rem] tracking-widest uppercase font-bold transition-shadow ${
+              className={`w-full px-8 py-3 text-center text-[0.65rem] tracking-widest uppercase font-bold transition-shadow sm:w-auto ${
                 btn.primary
                   ? "bg-white shadow-xl"
                   : "border border-white/60 text-white hover:bg-white/15"
@@ -154,11 +156,8 @@ export default function Hero() {
 
       {/* Kit badge — spin on load */}
       <motion.div
-        className="absolute z-20 flex flex-col items-center justify-center text-center text-white font-bold text-[0.55rem] tracking-wide uppercase leading-snug shadow-2xl"
+        className="absolute right-5 top-28 z-20 flex h-20 w-20 flex-col items-center justify-center text-center text-white font-bold text-[0.5rem] tracking-wide uppercase leading-snug shadow-2xl md:top-auto md:bottom-[120px] md:right-[calc(52%_-_60px)] md:h-[90px] md:w-[90px] md:text-[0.55rem]"
         style={{
-          right: "calc(52% - 60px)",
-          bottom: "120px",
-          width: 90, height: 90,
           borderRadius: "50%",
           background: "var(--purple)",
         }}

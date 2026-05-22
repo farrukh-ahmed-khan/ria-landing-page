@@ -64,7 +64,7 @@ export default function Events() {
             animate={{ x: ["-100%", "300%"] }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 9, delay: 1.5 }}
           />
-          <div className="p-12 flex flex-col justify-between">
+          <div className="flex flex-col justify-between p-6 sm:p-8 md:p-12">
             <div>
               <motion.span
                 initial={{ opacity: 0, x: -20 }}

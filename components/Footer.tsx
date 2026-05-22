@@ -16,7 +16,7 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative flex flex-wrap items-center justify-between gap-4 px-12 py-10"
+      className="relative flex flex-wrap items-center justify-between gap-4 px-6 py-10 md:px-12"
       style={{ background: "var(--charcoal)" }}
     >
       {/* Animated top border — draws in from left */}

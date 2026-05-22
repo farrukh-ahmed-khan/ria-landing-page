@@ -25,6 +25,13 @@ body {
 .font-display { font-family: 'Playfair Display', serif; }
 .font-script  { font-family: 'Dancing Script', cursive; }
 
+@media (min-width: 48rem) {
+  [data-desktop-clip="hero-photo-panel"],
+  [data-desktop-clip="hero-photo-overlay"] {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%) !important;
+  }
+}
+
 /* diagonal stripe texture */
 .stripe-texture {
   background-image: repeating-linear-gradient(

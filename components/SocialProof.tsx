@@ -42,7 +42,7 @@ export default function SocialProof() {
               custom={i}
               whileHover={{ scale: 1.015, backgroundColor: "rgba(255,255,255,0.12)" }}
               transition={{ type: "spring", stiffness: 300, damping: 24 }}
-              className="relative p-10 border cursor-default"
+              className="relative border p-6 cursor-default sm:p-8 md:p-10"
               style={{ background: "rgba(255,255,255,0.08)", borderColor: "rgba(255,255,255,0.12)" }}
             >
               <motion.span
