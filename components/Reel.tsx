@@ -17,13 +17,13 @@ const reels: Reel[] = [
     title: "10X Premiere Event",
     subtitle: "AI Book & App Launch Event",
     src: "/media/lavanya-10x-premiere-launch.mp4",
-    poster: "/media/lavanya-10x-premiere-cover.jpeg",
     num: "01",
   },
   {
     title: "TiEcon Detroit 2018",
     subtitle: "Featured Speaking Reel",
     src: "/media/lavanya-reel-01.mp4",
+     poster: "/media/lavanya-10x-premiere-cover.jpeg",
     num: "02",
   },
   {
