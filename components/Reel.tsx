@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
 
@@ -50,22 +50,16 @@ function VideoCard({
   objectPosition?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
 
-  const toggle = () => {
-    if (!ref.current) return;
-    if (playing) {
-      ref.current.pause();
-      setPlaying(false);
-    } else {
-      ref.current.play().then(() => setPlaying(true)).catch(() => {});
+  const handleLoadedMetadata = () => {
+    if (ref.current && !reel.poster) {
+      ref.current.currentTime = 0.01;
     }
   };
 
   return (
     <div
-      onClick={toggle}
-      className={`group relative overflow-hidden rounded-xl cursor-pointer select-none ${className}`}
+      className={`group relative overflow-hidden rounded-xl ${className}`}
       style={{ background: "#111", boxShadow: "0 4px 32px rgba(0,0,0,0.5)" }}
     >
       <video
@@ -74,50 +68,38 @@ function VideoCard({
         poster={reel.poster}
         playsInline
         preload="metadata"
+        controls
         loop
-        onEnded={() => setPlaying(false)}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+        onLoadedMetadata={handleLoadedMetadata}
+        className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
       />
 
-      {/* bottom gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+      {/* top gradient for text readability */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-black/75 to-transparent pointer-events-none" />
 
-      {/* top-left number */}
-      <div className="absolute top-3.5 left-4 pointer-events-none">
+      {/* top info — title/subtitle left, number right */}
+      <div className="absolute top-0 left-0 right-0 flex items-start justify-between p-4 pointer-events-none">
+        <div>
+          <p className="text-[0.48rem] tracking-[0.3em] uppercase font-medium text-white/55 mb-0.5">
+            {reel.subtitle}
+          </p>
+          <p className="text-[0.88rem] font-bold text-white leading-snug drop-shadow">
+            {reel.title}
+          </p>
+        </div>
         <span
-          className="text-[0.5rem] font-bold tracking-[0.3em] uppercase"
+          className="text-[0.5rem] font-bold tracking-[0.3em] uppercase shrink-0 ml-2"
           style={{ color: "var(--magenta)" }}
         >
           {reel.num}
         </span>
       </div>
 
-      {/* top-right magenta bar */}
+      {/* magenta top-right accent bar */}
       <div
         className="absolute top-0 right-0 h-0.5 w-10 pointer-events-none"
         style={{ background: "var(--magenta)" }}
       />
-
-      {/* play button */}
-      {!playing && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-black/30 backdrop-blur-sm transition-all duration-300 group-hover:border-white/60 group-hover:bg-white/20 group-hover:scale-110">
-            <svg width={18} height={18} viewBox="0 0 24 24" fill="white">
-              <path d="M8 5.14v14l11-7-11-7z" />
-            </svg>
-          </div>
-        </div>
-      )}
-
-      {/* bottom info */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
-        <p className="text-[0.48rem] tracking-[0.3em] uppercase font-medium text-white/50 mb-0.5">
-          {reel.subtitle}
-        </p>
-        <p className="text-[0.9rem] font-bold text-white leading-snug">
-          {reel.title}
-        </p>
-      </div>
     </div>
   );
 }
@@ -133,7 +115,7 @@ export default function Reel() {
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* heading — left aligned, description floated right */}
+        {/* heading */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -150,7 +132,6 @@ export default function Reel() {
               <span className="w-6 h-px" style={{ background: "var(--magenta)" }} />
               Video Reel
             </motion.p>
-
             <motion.h2
               variants={fadeUp}
               className="font-display font-black text-white leading-none tracking-tight"
@@ -179,7 +160,11 @@ export default function Reel() {
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4"
         >
-          <VideoCard reel={featured} className="aspect-video w-full" />
+          <VideoCard
+            reel={featured}
+            className="aspect-video w-full"
+            objectPosition="object-top"
+          />
         </motion.div>
 
         {/* supporting — 3-col square grid */}
