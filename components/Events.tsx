@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { fadeUp, slideLeft, slideRight, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
+import { fadeUp, slideLeft, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
 
 const miniEvents = [
   { badge: "Featured Speaker", title: "TiECon Detroit",
@@ -16,6 +16,30 @@ const metaItems = [
   ["Venue",    "Farmington Co-Work, MI"],
   ["Audience", "55 Curated Guests"],
   ["Format",   "VIP + General"],
+];
+
+const speakingPlatforms = [
+  {
+    title: "Michigan Women in Tech",
+    desc: "Technologist and thought leader with Michigan Women in Tech, conducting global workshops on AI applications in automotive sales. These sessions empower women to bridge technical and creative fields.",
+  },
+  {
+    title: "Detroit's AutoTech Developer's Alliance Summit",
+    desc: "Delivered a keynote address highlighting the critical role of mentorship in empowering the next generation with practical skills.",
+  },
+  {
+    title: "Tech Elevator",
+    desc: "Mentors young students through the Tech Elevator platform, helping them navigate trending technologies, problem-solving strategies, and career development while bridging academic knowledge with industry expectations.",
+  },
+];
+
+const speakerCredentials = [
+  "Speaker at Indian Fashion Week events",
+  "Speaker and mentor for Miss India pageant platforms",
+  "Fashion stylist for pageants, fashion showcases, and editorial events",
+  "Speech coach for models and pageant contestants",
+  "Advocate for women in AI, fashion, and entrepreneurship",
+  "Curator of AI x Fashion experiences and innovation-focused events",
 ];
 
 export default function Events() {
@@ -115,6 +139,82 @@ export default function Events() {
             >
               10X<br />✦
             </motion.p>
+          </motion.div>
+        </motion.div>
+
+        {/* Speaking platforms */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="grid grid-cols-1 gap-6 border p-6 mb-6 sm:p-8 md:grid-cols-[1fr_0.85fr] md:p-10"
+          style={{ borderColor: "#e5e5e5", background: "#fbfbfb" }}
+        >
+          <div>
+            <motion.p
+              variants={fadeUp}
+              className="text-[0.58rem] tracking-[0.32em] uppercase font-semibold mb-3"
+              style={{ color: "var(--purple)" }}
+            >
+              Speaking Platforms & Thought Leadership
+            </motion.p>
+            <motion.h3
+              variants={fadeUp}
+              className="font-display font-black mb-4"
+              style={{ fontSize: "clamp(1.6rem,3vw,2.35rem)", color: "var(--charcoal)" }}
+            >
+              Amplifying her voice across tech, AI, and mentorship.
+            </motion.h3>
+            <motion.p variants={fadeUp} className="max-w-2xl text-[0.88rem] leading-relaxed text-neutral-500">
+              From women-in-tech workshops to automotive technology summits, Lavanya brings practical AI,
+              creative strategy, and inclusive leadership into rooms built for the next generation of builders.
+            </motion.p>
+          </div>
+
+          <motion.blockquote
+            variants={slideLeft}
+            className="flex items-center border-l-4 py-2 pl-5 font-display italic text-[1.25rem] leading-relaxed"
+            style={{ borderColor: "var(--gold)", color: "var(--charcoal)" }}
+          >
+            &ldquo;Thought leadership isn&apos;t about having the loudest voice. It&apos;s about using your voice to include others.&rdquo;
+          </motion.blockquote>
+
+          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {speakingPlatforms.map((platform, i) => (
+              <motion.div
+                key={platform.title}
+                variants={fadeUp}
+                custom={i}
+                className="border bg-white p-6"
+                style={{ borderColor: "#ececec" }}
+              >
+                <h4 className="font-display text-[1.05rem] font-bold mb-3" style={{ color: "var(--charcoal)" }}>
+                  {platform.title}
+                </h4>
+                <p className="text-[0.8rem] leading-relaxed text-neutral-500">{platform.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeUp} className="md:col-span-2 border-t pt-6" style={{ borderColor: "#ececec" }}>
+            <p
+              className="text-[0.58rem] tracking-[0.28em] uppercase font-semibold mb-4"
+              style={{ color: "var(--purple)" }}
+            >
+              Speaker Segment Focus
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {speakerCredentials.map((credential) => (
+                <div
+                  key={credential}
+                  className="flex min-h-16 items-center border bg-white px-4 py-3 text-[0.78rem] font-medium leading-snug"
+                  style={{ borderColor: "#ececec", color: "var(--charcoal)" }}
+                >
+                  {credential}
+                </div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 

@@ -1,19 +1,24 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { fadeUp, slideLeft, slideRight, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
+import Image from "next/image";
+import { fadeUp, slideLeft, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
 
 const tags = [
-  "Technology Manager","Fashion Stylist","App Creator",
-  "Keynote Speaker","Event Curator","Brand Collaborator",
+  "Technology Manager",
+  "Fashion Stylist",
+  "App Creator",
+  "Keynote Speaker",
+  "Event Curator",
+  "Brand Collaborator",
 ];
-const press = ["TiECon Detroit","Ford Showcases","The 10X Premiere","@lav_271"];
+
+const press = ["TiECon Detroit", "Ford Showcases", "The 10X Premiere", "@lav_271"];
 
 export default function About() {
   return (
     <section id="about" className="py-24 px-6 md:px-12" style={{ background: "var(--cream)" }}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-20 items-start">
-
-        {/* Photo column */}
         <motion.div
           variants={slideLeft}
           initial="hidden"
@@ -27,7 +32,6 @@ export default function About() {
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* animated offset border */}
             <motion.div
               className="absolute"
               style={{ top: 12, left: 12, right: -12, bottom: -12, border: "2px solid var(--purple)", zIndex: -1 }}
@@ -36,10 +40,17 @@ export default function About() {
               viewport={VIEWPORT}
               transition={{ delay: 0.4, duration: 0.6 }}
             />
-            <p className="text-center text-[0.7rem] tracking-widest uppercase text-black/30">
-              <span className="block text-5xl mb-2">👩🏽</span>
-              Professional headshot<br />to be added
-            </p>
+            <Image
+              src="/media/lavanya-portrait-light.jpeg"
+              alt="Lavanya Suresh professional headshot"
+              fill
+              sizes="(min-width: 768px) 32vw, 88vw"
+              className="object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to top, rgba(91,0,40,0.18), transparent 52%)" }}
+            />
           </motion.div>
 
           <motion.div
@@ -56,7 +67,6 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* Text column */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -81,8 +91,8 @@ export default function About() {
           </motion.h2>
 
           {[
-            "Lavanya Suresh is a Technology Manager at FordDirect, a fashion stylist, and the creator of Outfitiq — an AI-powered styling app built with Claude. She stands at the unique crossroads of enterprise technology, creative entrepreneurship, and AI innovation.",
-            "A featured speaker at TiECon Detroit and Ford automotive showcases, Lavanya brings AI out of the abstract and into lived, personal experience — making it feel as natural as choosing an outfit.",
+            "Lavanya Suresh is a Technology Manager at FordDirect, a fashion stylist, and the creator of Outfitiq - an AI-powered styling app built with Claude. She stands at the unique crossroads of enterprise technology, creative entrepreneurship, and AI innovation.",
+            "A featured speaker at TiECon Detroit and Ford automotive showcases, Lavanya brings AI out of the abstract and into lived, personal experience - making it feel as natural as choosing an outfit.",
             "As a luxury event curator, brand collaborator, and growing content creator, Lavanya is defining what AI-powered style and entrepreneurship looks like for the next generation of women leaders.",
           ].map((para, i) => (
             <motion.p key={i} variants={fadeUp} custom={i} className="text-[0.95rem] leading-[1.8] text-neutral-600 mb-4">
@@ -90,7 +100,6 @@ export default function About() {
             </motion.p>
           ))}
 
-          {/* Tags */}
           <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mt-8">
             {tags.map((t, i) => (
               <motion.span
@@ -108,7 +117,6 @@ export default function About() {
             ))}
           </motion.div>
 
-          {/* Press */}
           <motion.div variants={fadeUp} className="mt-8 pt-6 border-t border-neutral-200">
             <p className="text-[0.6rem] tracking-[0.25em] uppercase text-neutral-400 mb-3">As Seen In</p>
             <div className="flex flex-wrap gap-6 items-center">

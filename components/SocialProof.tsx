@@ -13,6 +13,12 @@ const testimonials = [
   },
 ];
 
+const featureStats = [
+  "Women in Tech Chronicles",
+  "April 2025 Feature",
+  "15-Page Digital Magazine",
+];
+
 export default function SocialProof() {
   return (
     <section id="social" className="py-24 px-6 md:px-12" style={{ background: "var(--purple)" }}>
@@ -63,6 +69,51 @@ export default function SocialProof() {
               </p>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="mt-6 grid grid-cols-1 gap-6 border p-6 sm:p-8 md:grid-cols-[1fr_auto]"
+          style={{ background: "rgba(255,255,255,0.08)", borderColor: "rgba(255,255,255,0.12)" }}
+        >
+          <div>
+            <p className="text-[0.6rem] tracking-[0.35em] uppercase font-semibold text-white/50 mb-3">
+              Magazine Feature
+            </p>
+            <h3 className="font-display text-[1.45rem] font-bold text-white mb-3">
+              Featured in Women in Tech Chronicles
+            </h3>
+            <p className="max-w-2xl text-[0.85rem] leading-relaxed text-white/65">
+              The April 2025 digital feature spotlights Lavanya&apos;s path from advertising technology to AI,
+              her speaking platforms, mentorship work, pageant advocacy, and women-in-tech leadership.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {featureStats.map((item) => (
+                <span
+                  key={item}
+                  className="border px-3 py-2 text-[0.58rem] font-semibold uppercase tracking-widest text-white/70"
+                  style={{ borderColor: "rgba(255,255,255,0.16)" }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <motion.a
+            href="/lavanya-tech-chronicles-magazine.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.18)" }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="self-center border-2 border-white/50 px-6 py-4 text-center text-[0.65rem] font-bold uppercase tracking-widest text-white"
+          >
+            Read Magazine Feature
+          </motion.a>
         </motion.div>
       </div>
     </section>
