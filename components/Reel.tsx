@@ -43,9 +43,11 @@ const reels: Reel[] = [
 function VideoCard({
   reel,
   className = "",
+  objectPosition = "object-center",
 }: {
   reel: Reel;
   className?: string;
+  objectPosition?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -151,7 +153,7 @@ export default function Reel() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-sans font-black text-white leading-none tracking-tight"
+              className="font-display font-black text-white leading-none tracking-tight"
               style={{ fontSize: "clamp(2rem,4.5vw,3.25rem)" }}
             >
               See the work.{" "}
