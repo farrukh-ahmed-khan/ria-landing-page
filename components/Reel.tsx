@@ -163,7 +163,7 @@ export default function Reel() {
           <VideoCard
             reel={featured}
             className="aspect-video w-full"
-            objectPosition="object-top"
+            objectPosition="object-[center_20%]"
           />
         </motion.div>
 
