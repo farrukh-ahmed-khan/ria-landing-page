@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { fadeUp, slideLeft, staggerContainer, VIEWPORT } from "@/hooks/useScrollReveal";
 
 const miniEvents = [
@@ -124,16 +125,30 @@ export default function Events() {
           </div>
 
           <motion.div
-            className="hidden md:flex items-center justify-center"
+            className="relative min-h-[440px] overflow-hidden md:min-h-0"
             style={{ background: "linear-gradient(135deg,#A8005F,#7B0044)" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={VIEWPORT}
             transition={{ delay: 0.2 }}
           >
+            <Image
+              src="/media/lavanya_img1.jpg"
+              alt="Lavanya Suresh at a featured AI and fashion event"
+              fill
+              sizes="(min-width: 768px) 34vw, 88vw"
+              className="object-cover object-[center_18%]"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(91,0,40,0.62), transparent 58%), linear-gradient(to right, rgba(212,0,122,0.18), transparent 45%)",
+              }}
+            />
             <motion.p
-              className="font-display font-black text-center leading-none select-none"
-              style={{ fontSize: "5rem", color: "rgba(255,255,255,0.12)" }}
+              className="absolute bottom-6 right-6 font-display font-black text-right leading-none select-none"
+              style={{ fontSize: "5rem", color: "rgba(255,255,255,0.24)" }}
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >

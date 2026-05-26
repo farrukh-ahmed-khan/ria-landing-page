@@ -18,7 +18,10 @@ const item: Variants = {
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
   const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
@@ -44,31 +47,61 @@ export default function Hero() {
             right: "-10vw",
             width: "70vw",
             height: "80vh",
-            background: "radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 65%)",
+            background:
+              "radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 65%)",
           }}
         />
       </motion.div>
 
-      {([
-        { size: 6, top: "22%", left: "20%", dur: 4.5, delay: 0 },
-        { size: 4, top: "58%", left: "7%", dur: 6.2, delay: 1.8 },
-        { size: 9, top: "13%", left: "40%", dur: 5.5, delay: 0.7 },
-        { size: 3, top: "72%", left: "28%", dur: 3.8, delay: 2.4 },
-      ] as { size: number; top: string; left: string; dur: number; delay: number }[]).map((p, i) => (
+      {(
+        [
+          { size: 6, top: "22%", left: "20%", dur: 4.5, delay: 0 },
+          { size: 4, top: "58%", left: "7%", dur: 6.2, delay: 1.8 },
+          { size: 9, top: "13%", left: "40%", dur: 5.5, delay: 0.7 },
+          { size: 3, top: "72%", left: "28%", dur: 3.8, delay: 2.4 },
+        ] as {
+          size: number;
+          top: string;
+          left: string;
+          dur: number;
+          delay: number;
+        }[]
+      ).map((p, i) => (
         <motion.div
           key={i}
           className="absolute pointer-events-none rounded-full"
-          style={{ width: p.size, height: p.size, top: p.top, left: p.left, background: "rgba(255,255,255,0.18)" }}
+          style={{
+            width: p.size,
+            height: p.size,
+            top: p.top,
+            left: p.left,
+            background: "rgba(255,255,255,0.18)",
+          }}
           animate={{ y: [0, -24, 0], opacity: [0.15, 0.55, 0.15] }}
-          transition={{ duration: p.dur, repeat: Infinity, ease: "easeInOut", delay: p.delay }}
+          transition={{
+            duration: p.dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: p.delay,
+          }}
         />
       ))}
 
       <motion.div
         className="absolute inset-y-0 pointer-events-none"
-        style={{ width: "40%", background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.06) 50%, transparent 80%)" }}
+        style={{
+          width: "40%",
+          background:
+            "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.06) 50%, transparent 80%)",
+        }}
         animate={{ x: ["-100%", "300%"] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 8, delay: 2.5 }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "linear",
+          repeatDelay: 8,
+          delay: 2.5,
+        }}
       />
 
       <motion.div
@@ -103,7 +136,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: EASE, delay: 0.35 }}
         >
           <Image
-            src="/media/lavanya-portrait-dark.jpeg"
+            src="/media/lavanya_img2.jpg"
             alt="Lavanya Suresh professional portrait"
             fill
             priority
@@ -112,7 +145,10 @@ export default function Hero() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, rgba(91,0,40,0.24), transparent 45%)" }}
+            style={{
+              background:
+                "linear-gradient(to top, rgba(91,0,40,0.24), transparent 45%)",
+            }}
           />
         </motion.div>
 
@@ -132,9 +168,15 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <motion.div style={{ y: contentY, opacity }} className="relative z-10 max-w-xl px-5 pb-12 pt-64 sm:px-8 md:px-12 md:pb-20 md:pt-0">
+      <motion.div
+        style={{ y: contentY, opacity }}
+        className="relative z-10 max-w-xl px-5 pb-12 pt-64 sm:px-8 md:px-12 md:pb-20 md:pt-0"
+      >
         <motion.div variants={heroVariants} initial="hidden" animate="visible">
-          <motion.p variants={item} className="flex items-center gap-3 text-[0.65rem] tracking-[0.35em] uppercase text-white/75 font-semibold mb-4">
+          <motion.p
+            variants={item}
+            className="flex items-center gap-3 text-[0.65rem] tracking-[0.35em] uppercase text-white/75 font-semibold mb-4"
+          >
             <span className="w-8 h-px bg-white/50" />
             Speaker - Stylist - Innovator
           </motion.p>
@@ -144,22 +186,39 @@ export default function Hero() {
             className="font-display font-black text-white leading-[0.92] mb-4"
             style={{ fontSize: "clamp(2.9rem, 14vw, 8rem)" }}
           >
-            LAVANYA<br />SURESH
+            LAVANYA
+            <br />
+            SURESH
           </motion.h1>
 
-          <motion.p variants={item} className="text-base leading-relaxed text-white/85 mb-3 max-w-md">
-            My mission is to make AI personal - through style, technology, and entrepreneurship.
+          <motion.p
+            variants={item}
+            className="text-base leading-relaxed text-white/85 mb-3 max-w-md"
+          >
+            My mission is to make AI personal - through style, technology, and
+            entrepreneurship.
           </motion.p>
 
-          <motion.p variants={item} className="font-script text-2xl text-white/90 mb-10">
+          <motion.p
+            variants={item}
+            className="font-script text-2xl text-white/90 mb-10"
+          >
             For the One Who&apos;s Ready!
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <motion.div
+            variants={item}
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             {[
               { href: "#booking", label: "Book Lavanya", primary: true },
               { href: "#reel", label: "Watch Reel", primary: false },
-              { href: "/lavanya-suresh-media-kit.pdf", label: "Download Kit", primary: false, download: true },
+              {
+                href: "/lavanya-suresh-media-kit.pdf",
+                label: "Download Kit",
+                primary: false,
+                download: true,
+              },
             ].map((btn) => (
               <motion.a
                 key={btn.label}
@@ -193,7 +252,11 @@ export default function Hero() {
         transition={{ duration: 0.9, ease: EASE, delay: 1.1 }}
         whileHover={{ scale: 1.1, rotate: 8 }}
       >
-        MY<br />SPEAKER<br />KIT
+        MY
+        <br />
+        SPEAKER
+        <br />
+        KIT
       </motion.a>
     </section>
   );
