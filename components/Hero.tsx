@@ -106,7 +106,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y: photoY }}
-        className="absolute inset-x-0 top-0 h-[46%] flex items-center justify-center md:inset-y-0 md:left-auto md:h-auto md:w-[48%]"
+        className="absolute inset-x-0 top-36 h-[34%] flex items-center justify-center sm:top-32 sm:h-[38%] md:inset-y-0 md:left-auto md:top-0 md:h-auto md:w-[48%]"
         initial={{ x: 120, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
@@ -141,7 +141,7 @@ export default function Hero() {
             fill
             priority
             sizes="(min-width: 768px) 34vw, 72vw"
-            className="object-cover"
+            className="object-cover object-[center_22%] md:object-center"
           />
           <div
             className="absolute inset-0"
@@ -170,7 +170,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y: contentY, opacity }}
-        className="relative z-10 max-w-xl px-5 pb-12 pt-64 sm:px-8 md:px-12 md:pb-20 md:pt-0"
+        className="relative z-10 max-w-xl px-5 pb-12 pt-[25rem] sm:px-8 sm:pt-[27rem] md:px-12 md:pb-20 md:pt-0"
       >
         <motion.div variants={heroVariants} initial="hidden" animate="visible">
           <motion.p
@@ -215,7 +215,7 @@ export default function Hero() {
               { href: "#reel", label: "Watch Reel", primary: false },
               {
                 href: "/lavanya-suresh-media-kit.pdf",
-                label: "Download Kit",
+                label: "View Kit",
                 primary: false,
                 download: true,
               },
@@ -227,7 +227,7 @@ export default function Hero() {
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className={`w-full px-8 py-3 text-center text-[0.65rem] tracking-widest uppercase font-bold transition-shadow sm:w-auto ${
+                className={`w-full px-8 py-3 text-center text-[0.65rem] tracking-widest uppercase font-bold transition-shadow sm:w-auto cursor-pointer ${
                   btn.primary
                     ? "bg-white shadow-xl"
                     : "border border-white/60 text-white hover:bg-white/15"
@@ -242,10 +242,9 @@ export default function Hero() {
       </motion.div>
 
       <motion.a
-        href="/lavanya-suresh-media-kit.pdf"
-        download
-        aria-label="Download Lavanya Suresh media kit PDF"
-        className="absolute right-5 top-28 z-20 flex h-20 w-20 flex-col items-center justify-center text-center text-white font-bold text-[0.5rem] tracking-wide uppercase leading-snug shadow-2xl md:top-auto md:bottom-[120px] md:right-[calc(52%_-_60px)] md:h-[90px] md:w-[90px] md:text-[0.55rem]"
+        // href="/lavanya-suresh-media-kit.pdf"
+        aria-label="View Lavanya Suresh media kit PDF"
+        className="absolute right-5 top-40 z-20 flex h-20 w-20 flex-col items-center justify-center text-center text-white font-bold text-[0.5rem] tracking-wide uppercase leading-snug shadow-2xl sm:top-36 md:top-auto md:bottom-[120px] md:right-[calc(52%_-_60px)] md:h-[90px] md:w-[90px] md:text-[0.55rem] cursor-pointer"
         style={{ borderRadius: "50%", background: "var(--purple)" }}
         initial={{ scale: 0, rotate: -180, opacity: 0 }}
         animate={{ scale: 1, rotate: 0, opacity: 1 }}

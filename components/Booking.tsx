@@ -156,13 +156,12 @@ export default function Booking() {
           </motion.a>
           <motion.a
             href="/lavanya-suresh-media-kit.pdf"
-            download
             whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.18)" }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="px-10 py-4 border-2 border-white/60 text-white font-semibold text-[0.68rem] tracking-widest uppercase"
           >
-            Download Speaker Kit
+            View Speaker Kit
           </motion.a>
         </motion.div>
 

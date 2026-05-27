@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const links = [
   { href: "#about",   label: "About"    },
@@ -13,7 +13,6 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -33,12 +32,12 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.2)" : "none",
       }}
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
         <Link href="#" className="font-display text-lg font-bold text-white tracking-wide">
           Lavanya Suresh
         </Link>
 
-        <ul className="hidden md:flex gap-8 list-none">
+        <ul className="flex w-full flex-wrap gap-2 list-none md:w-auto md:gap-8">
           {links.map((l, i) => (
             <motion.li
               key={l.href}
@@ -48,70 +47,17 @@ export default function Navbar() {
             >
               <a
                 href={l.href}
-                className="relative text-[0.68rem] tracking-widest uppercase font-medium text-white/75 hover:text-white transition-colors group"
+                className="relative block border border-white/20 px-3 py-2 text-[0.58rem] tracking-widest uppercase font-medium text-white/80 transition-colors hover:border-white/45 hover:text-white md:border-0 md:px-0 md:py-0 md:text-[0.68rem] md:text-white/75 md:group"
               >
                 {l.label}
                 <span
-                  className="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"
+                  className="absolute -bottom-0.5 left-0 hidden h-px w-0 bg-white transition-all duration-300 md:block md:group-hover:w-full"
                 />
               </a>
             </motion.li>
           ))}
         </ul>
-
-        <button
-          type="button"
-          aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMobileOpen((open) => !open)}
-          className="relative grid h-10 w-10 place-items-center border border-white/35 text-white md:hidden"
-        >
-          <span className="sr-only">{mobileOpen ? "Close" : "Menu"}</span>
-          <span className="relative block h-4 w-5">
-            <span
-              className={`absolute left-0 top-0 h-px w-5 bg-current transition-transform ${
-                mobileOpen ? "translate-y-[7px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[7px] h-px w-5 bg-current transition-opacity ${
-                mobileOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute bottom-0 left-0 h-px w-5 bg-current transition-transform ${
-                mobileOpen ? "-translate-y-[8px] -rotate-45" : ""
-              }`}
-            />
-          </span>
-        </button>
       </div>
-
-      <AnimatePresence>
-        {mobileOpen ? (
-          <motion.ul
-            id="mobile-navigation"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.24, ease: "easeOut" }}
-            className="overflow-hidden list-none md:hidden"
-          >
-            {links.map((link) => (
-              <li key={link.href} className="border-t border-white/15">
-                <a
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-white/85"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </motion.ul>
-        ) : null}
-      </AnimatePresence>
     </motion.nav>
   );
 }
