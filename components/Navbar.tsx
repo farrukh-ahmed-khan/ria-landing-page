@@ -4,11 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const links = [
-  { href: "#about",   label: "About"    },
-  { href: "#topics",  label: "Speaking" },
-  { href: "#events",  label: "Events"   },
-  { href: "#reel",    label: "Reel"     },
-  { href: "#booking", label: "Book"     },
+  { href: "#about", label: "About" },
+  { href: "#topics", label: "Speaking" },
+  { href: "#events", label: "Events" },
+  { href: "#reel", label: "Reel" },
+  // { href: "#booking", label: "Book"     },
 ];
 
 export default function Navbar() {
@@ -33,7 +33,10 @@ export default function Navbar() {
       }}
     >
       <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
-        <Link href="#" className="font-display text-lg font-bold text-white tracking-wide">
+        <Link
+          href="#"
+          className="font-display text-lg font-bold text-white tracking-wide"
+        >
           Lavanya Suresh
         </Link>
 
@@ -50,9 +53,7 @@ export default function Navbar() {
                 className="relative block border border-white/20 px-3 py-2 text-[0.58rem] tracking-widest uppercase font-medium text-white/80 transition-colors hover:border-white/45 hover:text-white md:border-0 md:px-0 md:py-0 md:text-[0.68rem] md:text-white/75 md:group"
               >
                 {l.label}
-                <span
-                  className="absolute -bottom-0.5 left-0 hidden h-px w-0 bg-white transition-all duration-300 md:block md:group-hover:w-full"
-                />
+                <span className="absolute -bottom-0.5 left-0 hidden h-px w-0 bg-white transition-all duration-300 md:block md:group-hover:w-full" />
               </a>
             </motion.li>
           ))}

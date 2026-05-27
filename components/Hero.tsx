@@ -213,17 +213,17 @@ export default function Hero() {
             {[
               { href: "#booking", label: "Book Lavanya", primary: true },
               { href: "#reel", label: "Watch Reel", primary: false },
-              {
-                href: "/lavanya-suresh-media-kit.pdf",
-                label: "View Kit",
-                primary: false,
-                download: true,
-              },
+              // {
+              //   href: "/lavanya-suresh-media-kit.pdf",
+              //   label: "View Kit",
+              //   primary: false,
+              //   download: true,
+              // },
             ].map((btn) => (
               <motion.a
                 key={btn.label}
                 href={btn.href}
-                download={btn.download}
+                // download={btn.download}
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
